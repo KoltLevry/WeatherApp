@@ -45,6 +45,8 @@ export const StyledNavLink = styled(NavLink)`
 export const Main = styled.main`
   display: flex;
   flex-direction: column;
+  align-items: center;
   flex: 1;
   padding: 20px;
+  margin-top: 100px;
 `;

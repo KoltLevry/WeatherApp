@@ -13,7 +13,7 @@ import {
 function Layout({children}: LayoutProps) {
     const navigate = useNavigate();
     
-    const goToHomePage = () => navigate("/home");
+    const goToHomePage = () => navigate("/");
 
     return (
         <LayoutWrapper>
@@ -21,7 +21,7 @@ function Layout({children}: LayoutProps) {
                 <AppTitle onClick={goToHomePage}>Weather App</AppTitle>
                 <NavContainer>
                     <StyledNavLink
-                    style={({isActive}) => ({fontWeight: isActive ? "700" : "400"})} to={"/home"}>Home</StyledNavLink>
+                    style={({isActive}) => ({fontWeight: isActive ? "700" : "400"})} to={"/"}>Home</StyledNavLink>
                     <StyledNavLink 
                     style={({isActive}) => ({fontWeight: isActive ? "700" : "400"})} to={"/history"}>History</StyledNavLink>
                 </NavContainer>
