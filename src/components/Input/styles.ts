@@ -21,6 +21,8 @@ export const InputElement = styled.input`
   font-size: 20px;
   background-color: transparent;
   backdrop-filter: blur(10px);
+  color: whitesmoke;
+  font-weight: 600;
 
   &::placeholder {
     color: whitesmoke;

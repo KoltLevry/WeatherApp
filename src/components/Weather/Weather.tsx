@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { MainhBox, Resultbox, SearchBox } from "./styles";
+import { CityName, ErrorDescription, ErrorMessage, MainBox, MainErrorInfo, MainInfoBox, Resultbox, SearchBox, TemperatureNumber, WeatherIcon, WeatherIconBox } from "./styles";
 import { appWeatherActions, appWeatherSelectors } from "store/redux/appWeather/appWeatherSlice";
 import { AppDispatch } from "store/store";
 import Input from "components/Input/Input";
 import Button from "components/Button/Button";
+import Spinner from "components/Spinner/Spinner";
 
 function Weather() {
 
@@ -20,23 +21,31 @@ function Weather() {
     }
 
     return(
-        <MainhBox>
+        <MainBox>
             <SearchBox>
                 <Input placeholder="Enter city name" value={city} onChange={(e) => setCity(e.target.value)}></Input>
                 <Button name="Search" onClick={handleSearch}></Button>
             </SearchBox>
             
-
-            {error && <p style={{ color: "red" }}>{error}</p>}
-            {data && (
+            {error && (
                 <Resultbox>
-                    <h2>{data.name}</h2>
-                    <p>Температура: {data.main.temp}°C</p>
-                    <p>Вологість: {data.main.humidity}%</p>
-                    {/* <p>Опис: {data.weather[0]}</p> */}
+                    <MainErrorInfo>API Error</MainErrorInfo>
+                    <ErrorDescription>Something went wrong with API data</ErrorDescription>
+                    <ErrorMessage>{error}</ErrorMessage>
                 </Resultbox>
             )}
-        </MainhBox>
+            {status === 'loading' ? <Spinner /> : data && (
+                <Resultbox>
+                    <MainInfoBox>
+                        <TemperatureNumber>{data.main.temp} °C</TemperatureNumber>
+                        <CityName>{data.name}</CityName>
+                    </MainInfoBox>
+                    <WeatherIconBox>
+                        <WeatherIcon src={`https://openweathermap.org/img/wn/${data.weather[0].icon}.png`} alt="Weather" />
+                    </WeatherIconBox>
+                </Resultbox>
+            )}
+        </MainBox>
     )
 }
 

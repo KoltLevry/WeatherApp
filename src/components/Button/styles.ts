@@ -17,4 +17,18 @@ export const MainButton = styled.button`
   letter-spacing: 1px;
   font-family: Arial, Tahoma, sans - serif;
   background-color: #3297f5;
+
+  &:hover {
+    background-color: #1a5ea8;
+  }
+
+  &:active {
+    background-color: #0e3b6b;
+    transform: scale(0.95);
+  }
+
+  &:disabled {
+    background-color: #b5b5b5;
+    cursor: not-allowed;
+  }
 `

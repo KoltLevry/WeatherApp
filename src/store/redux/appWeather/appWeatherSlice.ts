@@ -16,7 +16,7 @@ export const appWeatherSlice = createAppSlice ({
             async (name: string, thunkApi) => {
                 try {
                     const result = await axios.get(
-                        `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=c4c16037cd6e170b958cd49f397a0146`
+                        `https://api.openweathermap.org/data/2.5/weather?q=${name}&units=metric&appid=c4c16037cd6e170b958cd49f397a0146`
                     );
                     return result.data;
                 } catch(error) {
@@ -29,6 +29,7 @@ export const appWeatherSlice = createAppSlice ({
                     state.error = undefined;
                 },
                 fulfilled: (state: AppWeatherSliceState, action: any) => {
+                    // console.log("✅ API RESPONSE", action.payload);
                     state.data = action.payload;
                     state.status = 'success';
                 },
