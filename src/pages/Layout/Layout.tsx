@@ -3,25 +3,30 @@ import { LayoutProps } from "./types";
 import { 
     LayoutWrapper,
     Header,
+    AppTitle,
+    NavContainer,
+    StyledNavLink,
+    Main,
     
 } from "./styles";
 
 function Layout({children}: LayoutProps) {
     const navigate = useNavigate();
     
+    const goToHomePage = () => navigate("/home");
+
     return (
         <LayoutWrapper>
-            {/* <button onClick={() => navigate('/about')}>Go to About</button> */}
             <Header>
-                <h1>My App</h1>
-                <nav>
-                    <ul>
-                        <li>Home</li>
-                        <li>History</li>
-                    </ul>
-                </nav>
+                <AppTitle onClick={goToHomePage}>Weather App</AppTitle>
+                <NavContainer>
+                    <StyledNavLink
+                    style={({isActive}) => ({fontWeight: isActive ? "700" : "400"})} to={"/home"}>Home</StyledNavLink>
+                    <StyledNavLink 
+                    style={({isActive}) => ({fontWeight: isActive ? "700" : "400"})} to={"/history"}>History</StyledNavLink>
+                </NavContainer>
             </Header>
-            <main>{children}</main>
+            <Main>{children}</Main>
         </LayoutWrapper>
     );
 

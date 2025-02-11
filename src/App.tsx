@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import GlobalStyles from './styles/GlobalStyles'
 import Layout from 'pages/Layout/Layout'
+import Home from 'pages/Home/Home'
+import History from 'pages/History/History'
 
 
 const App = () => {
@@ -10,8 +12,8 @@ const App = () => {
       <GlobalStyles />
       <Layout>
         <Routes>
-          {/* <Route path="/" element={} /> */}
-          {/* <Route path="/history" element={<h1>History</h1>} /> */}
+          <Route path='/home' element={<Home />}></Route>
+          <Route path='/history' element={<History />}></Route>
         </Routes>
       </Layout>
     </BrowserRouter>
