@@ -58,12 +58,25 @@ export const ErrorMessage = styled.div`
 `
 
 export const MainErrorInfo = styled.div`
-  height: 38px;
-  color: red;
+  font-size: 48px;
+  font-weight: bold;
+  color: salmon;
 `
 
 export const ErrorDescription = styled.div`
-  height: 18px;
+  font-size: 24px;
   color: whitesmoke;
 `
 
+export const ResultErrorBox = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 20px;
+padding: 40px;
+height: 180px;
+border-radius: 20px;
+background-color: #0005225f;
+backdrop-filter: blur(4px);
+`

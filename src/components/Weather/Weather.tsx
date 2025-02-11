@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { CityName, ErrorDescription, ErrorMessage, MainBox, MainErrorInfo, MainInfoBox, Resultbox, SearchBox, TemperatureNumber, WeatherIcon, WeatherIconBox } from "./styles";
+import { CityName, ErrorDescription, ErrorMessage, MainBox, MainErrorInfo, MainInfoBox, Resultbox, ResultErrorBox, SearchBox, TemperatureNumber, WeatherIcon, WeatherIconBox } from "./styles";
 import { appWeatherActions, appWeatherSelectors } from "store/redux/appWeather/appWeatherSlice";
 import { AppDispatch } from "store/store";
 import Input from "components/Input/Input";
@@ -26,15 +26,15 @@ function Weather() {
                 <Input placeholder="Enter city name" value={city} onChange={(e) => setCity(e.target.value)}></Input>
                 <Button name="Search" onClick={handleSearch}></Button>
             </SearchBox>
-            
-            {error && (
-                <Resultbox>
+            {status === 'loading' && <Spinner />}
+            {status === 'error' && error && (
+                <ResultErrorBox>
                     <MainErrorInfo>API Error</MainErrorInfo>
                     <ErrorDescription>Something went wrong with API data</ErrorDescription>
                     <ErrorMessage>{error}</ErrorMessage>
-                </Resultbox>
+                </ResultErrorBox>
             )}
-            {status === 'loading' ? <Spinner /> : data && (
+            {status === 'success' && data && (
                 <Resultbox>
                     <MainInfoBox>
                         <TemperatureNumber>{data.main.temp} °C</TemperatureNumber>

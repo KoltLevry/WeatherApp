@@ -1,5 +1,5 @@
 import { createAppSlice } from './../../createAppSlice';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { AppWeatherSliceState } from './types';
 
 const appWeathreInitialState: AppWeatherSliceState = {
@@ -19,8 +19,9 @@ export const appWeatherSlice = createAppSlice ({
                         `https://api.openweathermap.org/data/2.5/weather?q=${name}&units=metric&appid=c4c16037cd6e170b958cd49f397a0146`
                     );
                     return result.data;
-                } catch(error) {
-                    return thunkApi.rejectWithValue(error);
+                } catch(err) {
+                    const error = err as AxiosError;
+                    return thunkApi.rejectWithValue(error.message || "Unknown error");
                 }
             }, 
             {
@@ -29,7 +30,7 @@ export const appWeatherSlice = createAppSlice ({
                     state.error = undefined;
                 },
                 fulfilled: (state: AppWeatherSliceState, action: any) => {
-                    // console.log("✅ API RESPONSE", action.payload);
+                    console.log("✅ API RESPONSE", action.payload);
                     state.data = action.payload;
                     state.status = 'success';
                 },
