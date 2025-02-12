@@ -15,6 +15,15 @@ export default defineConfig({
       'store': path.resolve(__dirname, 'src/store')
     }
   },
+  // resolve: {
+  //   alias: {
+  //     assets: "/src/assets",
+  //     components: "/src/components",
+  //     pages: "/src/pages",
+  //     styles: "/src/styles",
+  //     store: "/src/store",
+  //   }
+  // },  
   server: {
     open: true,
   },
@@ -24,4 +33,5 @@ export default defineConfig({
     setupFiles: "src/setupTests",
     mockReset: true,
   },
+
 })
