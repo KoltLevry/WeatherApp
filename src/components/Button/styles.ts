@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
 
 export const MainButton = styled.button`
-  width: 140px;
+  /* width: 140px; */
+  width:  100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,7 +10,7 @@ export const MainButton = styled.button`
   max-height: 50px;
   outline: none;
   border: none;
-  padding: 20px;
+  padding: 20px 40px;
   border-radius: 30px;
   color: white;
   font-size: 20px;

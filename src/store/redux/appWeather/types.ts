@@ -2,6 +2,7 @@ export interface AppWeatherSliceState {
     data: WeatherData | null;
     error: string | undefined;
     status: 'default' | 'loading' | 'success' | 'error';
+    history: WeatherData[];
 }
 
 interface WeatherData {

@@ -6,6 +6,7 @@ const appWeathreInitialState: AppWeatherSliceState = {
     data: null,
     error: undefined,
     status: 'default',
+    history: [],
 }
 
 export const appWeatherSlice = createAppSlice ({
@@ -30,19 +31,21 @@ export const appWeatherSlice = createAppSlice ({
                     state.error = undefined;
                 },
                 fulfilled: (state: AppWeatherSliceState, action: any) => {
-                    console.log("✅ API RESPONSE", action.payload);
+                    // console.log("✅ API RESPONSE", action.payload);
                     state.data = action.payload;
                     state.status = 'success';
+                    state.history = [...state.history, action.payload];
                 },
                 rejected: (state: AppWeatherSliceState, action: any) => {
                     state.status = 'error';
                     state.error = action.payload;
                 }
             }),
-            resetweather: create.reducer((state: AppWeatherSliceState) => {
+            resetWeather: create.reducer((state: AppWeatherSliceState) => {
                 state.data = null;
                 state.error = undefined;
                 state.status = 'default';
+                state.history = [];
             })
     }),
     selectors: {
