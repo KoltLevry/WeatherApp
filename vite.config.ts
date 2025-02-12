@@ -16,6 +16,15 @@ export default defineConfig({
     }
   },
   // resolve: {
+    //   alias: {
+    //     assets: "/WeatherApp/src/assets",
+    //     components: "/WeatherApp/src/components",
+    //     pages: "/WeatherApp/src/pages",
+    //     styles: "/WeatherApp/src/styles",
+    //     store: "/WeatherApp/src/store",
+    //   }
+    // },
+  // resolve: {
   //   alias: {
   //     assets: "/src/assets",
   //     components: "/src/components",
